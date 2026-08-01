@@ -66,12 +66,18 @@ A natural chain: `curl_sweep` → `diff_capabilities` → `validate_x402_complia
 
 ## Proven on-chain
 
-Live paid calls against the deployed endpoint completed the full x402 v2 round trip through the official OKX facilitator:
+### x402 Payment Settlement (X Layer, chain 196)
 
 | Tool | Amount | Settlement tx | Result |
 |------|--------|---------------|--------|
-| `audit_git_history` | `0.005 USDT0` (`5000` atomic) | [`0xb08852dc…6a5b7a`](https://www.oklink.com/xlayer/tx/0xb08852dcde3682645ed2927fa5577cf4d15735672fe08f3909030a33b56a5b7a) | `0x1` · paid call settled · payment-response `status:settled` |
-| `attest_readiness` | `0.03 USDT0` (`30000` atomic) | [`0xfc003a8e…2337cc`](https://www.oklink.com/xlayer/tx/0xfc003a8e30055c96659bd4bc4c5d0ccd6456b4c713d47bf578b795dd6e2337cc) | `0x1` · verdict READY · score 100 · `reportDigest` `0x13e22cee…` · `signature` `0xf2aee8af…` · **0G anchored**: `zeroGAnchorTx` [`0x6a05c1da…3defb`](https://scan.0g.ai/tx/0x6a05c1da8242ec93a8d3fbab46e2157a3a71dd2244697088d28a7bead8d3defb) (0G mainnet chain 16661, status `0x1`) · `zeroGStorageRoot` `0xa793d5fb…0850` |
+| `audit_git_history` | `0.005 USDT0` (`5000` atomic) | [`0xb08852dc…6a5b7a`](https://www.oklink.com/xlayer/tx/0xb08852dcde3682645ed2927fa5577cf4d15735672fe08f3909030a33b56a5b7a) | `0x1` · payment-response `status:settled` |
+| `attest_readiness` | `0.03 USDT0` (`30000` atomic) | [`0xfc003a8e…2337cc`](https://www.oklink.com/xlayer/tx/0xfc003a8e30055c96659bd4bc4c5d0ccd6456b4c713d47bf578b795dd6e2337cc) | `0x1` · verdict READY · score 100 · `reportDigest` `0x13e22cee…` · `signature` `0xf2aee8af…` |
+
+### 0G Storage Anchoring (0G mainnet, chain 16661)
+
+| Anchor tx | Storage root | Verified |
+|-----------|-------------|----------|
+| [`0x6a05c1da…3defb`](https://scan.0g.ai/tx/0x6a05c1da8242ec93a8d3fbab46e2157a3a71dd2244697088d28a7bead8d3defb) | `0xa793d5fb8b2f6d4c8e0f5d0db8b0f28f5c230dd99658f5764ec4a0eab6fd0850` | `status 0x1` on 0G mainnet · `eth_getTransactionReceipt` via `evmrpc.0g.ai` |
 
 ---
 
