@@ -25,7 +25,7 @@
   <a href="https://www.oklink.com/xlayer"><img src="https://img.shields.io/badge/X%20Layer-USDT0-3CCF4E?style=flat-square" alt="X Layer USDT0" /></a>
   <a href="https://mcp.evidiq.dev/methodology/x402"><img src="https://img.shields.io/badge/x402-0.005%E2%80%930.03%20USDT0-2563EB?style=flat-square" alt="x402: 0.005 to 0.03 USDT0" /></a>
   <a href="https://web3.okx.com/onchainos/dev-docs/payments/service-seller-sdk"><img src="https://img.shields.io/badge/Payments-Official%20OKX%20SDK-121212?style=flat-square&logo=okx&logoColor=white" alt="Official OKX Payment SDK" /></a>
-  <a href="https://www.okx.ai/agents/10389"><img src="https://img.shields.io/badge/OKX.AI-Agent%20%2310389%20Under%20Review-121212?style=flat-square&logo=okx&logoColor=white" alt="OKX.AI Agent 10389 listed" /></a>
+  <a href="https://www.okx.ai/agents/10389"><img src="https://img.shields.io/badge/OKX.AI-Agent%20%2310389%20Listed-121212?style=flat-square&logo=okx&logoColor=white" alt="OKX.AI Agent 10389 listed" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-3DA639?style=flat-square" alt="License: MIT" /></a>
 </p>
 
@@ -36,7 +36,7 @@
 1. **`skills/`** — 15 markdown methodology skills that auto-trigger in any coding agent (spec → freeze → TDD → bypass-test → x402 gate → OKX register → docs sync)
 2. **MCP server** — 15 tools (5 free, 10 paid) that verify MCP readiness: git history scan, x402 challenge validator, OKX status checker, production readiness score, and EIP-191 signed attestation with 0G Storage anchoring
 
-> **Launch status: live endpoint.** The MCP server is deployed at `https://mcp.evidiq.dev/methodology/mcp`, paid calls settle through the official OKX Payment SDK, and the OKX.AI listing (**Agent #10389**) is submitted and under review. 0G Storage anchoring is live — `attest_readiness` returns a real `zeroGAnchorTx` + `zeroGStorageRoot`.
+> **Launch status: live.** The MCP server is deployed at `https://mcp.evidiq.dev/methodology/mcp`, paid calls settle through the official OKX Payment SDK, and the OKX.AI listing (**Agent #10389**) is live and eligible for task recommendations. 0G Storage anchoring is live — `attest_readiness` returns a real `zeroGAnchorTx` + `zeroGStorageRoot`.
 
 ---
 
@@ -87,7 +87,7 @@ A natural chain: `curl_sweep` → `diff_capabilities` → `validate_x402_complia
 | :--- | :--- |
 | **Agent ID** | `#10389` |
 | **Agent Name** | `EVIDIQ Methodology` |
-| **Listing Status** | `Listing under review` |
+| **Listing Status** | `Listed on OKX.AI` |
 | **Registration Tx** | [`0x94c99f39009a80a800541d5693a301487a81f227f8b12ad88af4517eca4cb3e3`](https://www.oklink.com/xlayer/tx/0x94c99f39009a80a800541d5693a301487a81f227f8b12ad88af4517eca4cb3e3) |
 | **OKX Agent URL** | [https://www.okx.ai/agents/10389](https://www.okx.ai/agents/10389) |
 | **Communication Addr** | `0x35EdD829714b79211b8530B4e1A9A3f49B6ae0C3` |
