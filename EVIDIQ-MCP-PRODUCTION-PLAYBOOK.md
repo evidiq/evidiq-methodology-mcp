@@ -80,7 +80,7 @@ real agent ID — writing docs before registration = rewriting them.
 - VPS logged in as `evidiqdev@gmail.com` (seller wallet `0x2a8efe30…c9b0`)
 - `web3.okx.com` reachable from VPS only (blocked on workstation)
 - Seller wallet has USDT0 balance (for top-up transfers to test buyer)
-- Test buyer wallet `0xd6B658dC6e53444bF9Cba598aFdd21Ede0A62Fb9` (key in `X402_SETTLE_KEY`)
+- Test buyer wallet `0x7dBE96004b01a0609f0eD699CA5723ead4fE52e6` (key in /root/evidiq-test-buyer.json (VPS, mode 600, never committed))
 - `GITHUB_TOKEN` in `Evidiq/.env.local` (for git push via credential helper)
 
 ### Source files ready
@@ -365,7 +365,7 @@ ssh hackaton-do 'bash -lc "for t in <paid_tool_1> <paid_tool_2> <paid_tool_3> <p
 
 ### 4.5 Top-up test buyer wallet
 
-Test buyer `0xd6B658dC6e53444bF9Cba598aFdd21Ede0A62Fb9` gets drained by paid calls.
+Test buyer `0x7dBE96004b01a0609f0eD699CA5723ead4fE52e6` gets drained by paid calls.
 Check balance + top-up:
 
 ```bash
@@ -375,7 +375,7 @@ ssh hackaton-do 'curl -s -X POST https://rpc.xlayer.tech -H "Content-Type: appli
   | python3 -c "import sys,json; r=json.load(sys.stdin)[\"result\"]; print(\"balance:\", int(r,16)/1e6, \"USDT0\")"'
 
 # Top-up 0.05 USDT0 (enough for cheapest paid call 0.005 + attest 0.03)
-ssh hackaton-do 'bash -lc "onchainos wallet send --recipient 0xd6B658dC6e53444bF9Cba598aFdd21Ede0A62Fb9 --chain 196 --readable-amount 0.05 --contract-token 0x779ded0c9e1022225f8e0630b35a9b54be713736 --force"'
+ssh hackaton-do 'bash -lc "onchainos wallet send --recipient 0x7dBE96004b01a0609f0eD699CA5723ead4fE52e6 --chain 196 --readable-amount 0.05 --contract-token 0x779ded0c9e1022225f8e0630b35a9b54be713736 --force"'
 ```
 
 **Note:** The `--recipient` flag (NOT `--to`). `--readable-amount` (NOT `--amt`).
@@ -547,7 +547,7 @@ ssh hackaton-do 'cd /root/evidiq-<slug>-src && docker build -t evidiq-<slug>:lat
 
 ```bash
 # Top-up if needed (attest usually costs 0.03 USDT0)
-ssh hackaton-do 'bash -lc "onchainos wallet send --recipient 0xd6B658dC6e53444bF9Cba598aFdd21Ede0A62Fb9 --chain 196 --readable-amount 0.05 --contract-token 0x779ded0c9e1022225f8e0630b35a9b54be713736 --force"'
+ssh hackaton-do 'bash -lc "onchainos wallet send --recipient 0x7dBE96004b01a0609f0eD699CA5723ead4fE52e6 --chain 196 --readable-amount 0.05 --contract-token 0x779ded0c9e1022225f8e0630b35a9b54be713736 --force"'
 
 # Run attest paid call, check for zeroG fields in response
 ssh hackaton-do 'export X402_SETTLE_KEY=$(grep "^X402_SETTLE_KEY=" /root/evidiq-circuit.env | cut -d= -f2-) && docker exec -e X402_SETTLE_KEY="$X402_SETTLE_KEY" -e TARGET_URL="https://mcp.evidiq.dev/<slug>/mcp" -e TOOL_NAME="attest_<slug>_safety" evidiq-circuit node /app/<slug>-pay-test.mjs'
@@ -1090,7 +1090,7 @@ GITHUB_TOKEN="$token" GIT_CONFIG_COUNT=1 \
 
 ### onchainos wallet send (top-up test buyer)
 ```bash
-ssh hackaton-do 'bash -lc "onchainos wallet send --recipient 0xd6B658dC6e53444bF9Cba598aFdd21Ede0A62Fb9 --chain 196 --readable-amount 0.05 --contract-token 0x779ded0c9e1022225f8e0630b35a9b54be713736 --force"'
+ssh hackaton-do 'bash -lc "onchainos wallet send --recipient 0x7dBE96004b01a0609f0eD699CA5723ead4fE52e6 --chain 196 --readable-amount 0.05 --contract-token 0x779ded0c9e1022225f8e0630b35a9b54be713736 --force"'
 ```
 
 ### onchainos payment quote (pre-submit gate)
