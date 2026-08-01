@@ -177,3 +177,15 @@ httpServer.listen(PORT, HOST, () => {
   console.log(`[evidiq-methodology-mcp] Payment Gate: ${bypassed ? "BYPASSED (TEST BUILD)" : "ENFORCED"}`);
   console.log(`[evidiq-methodology-mcp] Endpoints: /health, /x402, /skill.md, /mcp`);
 });
+
+// A single malformed request must never take the endpoint down. An empty POST body
+// threw `Unexpected end of JSON input` from inside the MCP transport, killed the
+// process, and left Traefik answering 502 — which OKX reads as an agent that does not
+// respond. Log loudly and keep serving: the request is already lost, the service
+// should not be.
+process.on("unhandledRejection", (reason) => {
+  console.error("[evidiq-methodology-mcp] unhandled rejection — staying up:", reason);
+});
+process.on("uncaughtException", (error) => {
+  console.error("[evidiq-methodology-mcp] uncaught exception — staying up:", error);
+});
