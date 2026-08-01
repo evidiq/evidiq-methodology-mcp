@@ -3,7 +3,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { handler } from "./server.js";
-import { getCatalog } from "./lib/catalog.js";
+import { handleX402Gate, isPaidTool } from "./lib/x402/gate.js";
+import { getX402DiscoveryCatalog } from "./lib/x402/challenge.js";
+import { isX402Bypassed } from "./lib/x402/config.js";
+import { methodologySignerAvailable } from "./lib/methodology/report.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,10 +16,12 @@ const HOST = process.env.HOSTNAME || "0.0.0.0";
 const PUBLIC_BASE_URL = (process.env.PUBLIC_BASE_URL || "https://mcp.evidiq.dev/methodology").replace(/\/$/, "");
 const SLUG = "methodology";
 
-// No payment gate, no bypass concept. All 9 tools are free infrastructure.
-console.log(`[evidiq-methodology-mcp] infrastructure service — 9 free tools, no payment gate.`);
+const bypassed = isX402Bypassed();
+if (bypassed) {
+  console.warn("[methodology] X402 GATE BYPASSED — Phase 1 test build. Paid tools answer without payment.");
+}
 
-const gatedHandler = (req: Request) => handler(req);
+const gatedHandler = (req: Request) => handleX402Gate(req, handler);
 
 async function nodeFetchAdapter(
   req: http.IncomingMessage,
@@ -76,17 +81,13 @@ function isMcpPath(urlPath: string): boolean {
   return urlPath === "/mcp" || urlPath === "/mcp/" || urlPath === `/${SLUG}/mcp` || urlPath === `/${SLUG}/mcp/`;
 }
 
-function routeMatch(urlPath: string, names: string[]): boolean {
-  return names.some((n) => urlPath === `/${n}` || urlPath === `/${SLUG}/${n}`);
-}
-
 const httpServer = http.createServer(async (req, res) => {
   const urlPath = (req.url || "/").split("?")[0];
 
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, Accept, payment-signature, PAYMENT-SIGNATURE, x-payment-signature"
+    "Content-Type, Authorization, payment-signature, PAYMENT-SIGNATURE, x-payment-signature, Accept"
   );
   res.setHeader(
     "Access-Control-Expose-Headers",
@@ -101,7 +102,7 @@ const httpServer = http.createServer(async (req, res) => {
   }
 
   // ── /health ──────────────────────────────────────────────────────────────
-  if (routeMatch(urlPath, ["health", ""])) {
+  if (urlPath === "/health" || urlPath === "/" || urlPath === `/${SLUG}/health`) {
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
     res.end(
@@ -109,11 +110,10 @@ const httpServer = http.createServer(async (req, res) => {
         ok: true,
         service: "evidiq-methodology-mcp",
         version: "1.0.0",
-        paymentGate: "none",
-        signerAvailable: false,
-        signerNote: "n/a — infrastructure service, no payment gate, no signer",
+        paymentGate: bypassed ? "bypassed" : "enforced",
+        signerAvailable: methodologySignerAvailable(),
+        toolsCount: 15,
         publicBaseUrl: PUBLIC_BASE_URL,
-        toolsCount: 9,
         timestamp: new Date().toISOString(),
       })
     );
@@ -121,28 +121,15 @@ const httpServer = http.createServer(async (req, res) => {
   }
 
   // ── /x402 ────────────────────────────────────────────────────────────────
-  if (routeMatch(urlPath, ["x402"])) {
+  if (urlPath === "/x402" || urlPath === `/${SLUG}/x402`) {
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
-    res.end(
-      JSON.stringify(
-        {
-          x402: "none",
-          note: "Infrastructure service — 9 free tools, no payment gate. There is no payment-required header, no 402, no WWW-Authenticate. The validate_x402_challenge tool decodes/validates challenges of OTHER (paid) EVIDIQ services.",
-          service: "evidiq-methodology-mcp",
-          publicBaseUrl: PUBLIC_BASE_URL,
-          allToolsFree: true,
-          tools: getCatalog().tools.map((t) => t.name),
-        },
-        null,
-        2
-      )
-    );
+    res.end(JSON.stringify(getX402DiscoveryCatalog(), null, 2));
     return;
   }
 
   // ── /skill.md ────────────────────────────────────────────────────────────
-  if (routeMatch(urlPath, ["skill.md"])) {
+  if (urlPath === "/skill.md" || urlPath === `/${SLUG}/skill.md`) {
     const skillPath = path.join(__dirname, "../skill.md");
     if (fs.existsSync(skillPath)) {
       res.statusCode = 200;
@@ -157,31 +144,15 @@ const httpServer = http.createServer(async (req, res) => {
 
   // ── /mcp ─────────────────────────────────────────────────────────────────
   if (isMcpPath(urlPath)) {
-    // §26-A-2: answer HEAD explicitly with GET's status and NO body (no hang) — defect #14.
-    // No payment gate → HEAD returns 200 (a paid gate-on service would return 402 here).
+    // §26-A-2: answer HEAD explicitly with GET's status and NO body (no hang).
     if (req.method === "HEAD") {
-      res.writeHead(200, {
+      const status = bypassed ? 200 : 402;
+      res.writeHead(status, {
         "Content-Type": "application/json",
         "Cache-Control": "no-store",
         Allow: "POST, OPTIONS, HEAD",
       });
       res.end();
-      return;
-    }
-
-    if (req.method === "GET") {
-      // GET /mcp returns a plain 200 note — there is no 402 (no gate).
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      res.setHeader("Cache-Control", "no-store");
-      res.end(
-        JSON.stringify({
-          ok: true,
-          service: "evidiq-methodology-mcp",
-          x402: "none",
-          note: "Infrastructure service — no payment gate. POST a JSON-RPC request to this endpoint (tools/list, tools/call). All 9 tools are free and return 200.",
-        })
-      );
       return;
     }
 
@@ -203,6 +174,6 @@ const httpServer = http.createServer(async (req, res) => {
 
 httpServer.listen(PORT, HOST, () => {
   console.log(`[evidiq-methodology-mcp] listening at http://${HOST}:${PORT}`);
-  console.log(`[evidiq-methodology-mcp] Payment Gate: NONE (infrastructure — 9 free tools)`);
+  console.log(`[evidiq-methodology-mcp] Payment Gate: ${bypassed ? "BYPASSED (TEST BUILD)" : "ENFORCED"}`);
   console.log(`[evidiq-methodology-mcp] Endpoints: /health, /x402, /skill.md, /mcp`);
 });
