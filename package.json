@@ -1,0 +1,37 @@
+{
+  "name": "@evidiq/methodology-mcp",
+  "version": "1.0.0",
+  "description": "EVIDIQ Methodology MCP — 9 free verification tools for the EVIDIQ fleet production methodology (git history scan, x402 challenge validator, OKX status, plan validator, determinism, capability diff, curl sweep). Infrastructure, not a paid service.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "evidiq-methodology": "dist/start-server.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/start-server.js",
+    "dev": "tsx start-server.ts",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.26.0",
+    "mcp-handler": "1.1.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.1",
+    "tsx": "4.23.1",
+    "typescript": "5.9.3",
+    "vitest": "^4.1.10"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "overrides": {
+    "@hono/node-server": "2.0.11",
+    "axios": "1.18.1",
+    "ws": "8.21.1"
+  }
+}
