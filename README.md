@@ -77,7 +77,7 @@ A natural chain: `curl_sweep` → `diff_capabilities` → `validate_x402_complia
 
 | Anchor tx | Storage root | Verified |
 |-----------|-------------|----------|
-| [`0x6a05c1da…3defb`](https://scan.0g.ai/tx/0x6a05c1da8242ec93a8d3fbab46e2157a3a71dd2244697088d28a7bead8d3defb) | `0xa793d5fb8b2f6d4c8e0f5d0db8b0f28f5c230dd99658f5764ec4a0eab6fd0850` | `status 0x1` on 0G mainnet · `eth_getTransactionReceipt` via `evmrpc.0g.ai` |
+| [`0x6a05c1da…3defb`](https://chainscan.0g.ai/tx/0x6a05c1da8242ec93a8d3fbab46e2157a3a71dd2244697088d28a7bead8d3defb) | `0xa793d5fb8b2f6d4c8e0f5d0db8b0f28f5c230dd99658f5764ec4a0eab6fd0850` | `status 0x1` on 0G mainnet · `eth_getTransactionReceipt` via `evmrpc.0g.ai` |
 
 ---
 
