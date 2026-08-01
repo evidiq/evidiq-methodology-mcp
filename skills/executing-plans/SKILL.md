@@ -1,7 +1,7 @@
 # executing-plans
 
 > Batch execution with checkpoints. Human gates at: contract freeze, Phase 1 pass, Phase 2 pass, OKX
-> submit. Adapted from obra/superpowers `executing-plans`, specialized so the checkpoints are the
+> submit. Adapted from EVIDIQ methodology `executing-plans`, specialized so the checkpoints are the
 > EVIDIQ two-phase gates (not generic milestones).
 
 ---
@@ -58,9 +58,9 @@ each gate.
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `executing-plans`)
+## EVIDIQ specialization (vs EVIDIQ methodology `executing-plans`)
 
-| obra/superpowers | EVIDIQ executing-plans |
+| EVIDIQ methodology | EVIDIQ executing-plans |
 |---|---|
 | Batch execution + checkpoints | Same, **plus** the 4 gates are the EVIDIQ two-phase + OKX gates |
 | Generic milestones | §12 TDD tasks (build) + playbook batches (deploy/verify/register/docs) |

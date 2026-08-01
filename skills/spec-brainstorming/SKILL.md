@@ -1,7 +1,7 @@
 # spec-brainstorming
 
 > Design review with a **frozen contract**. HARD GATE: no code leaves this skill until the design is
-> frozen and the user explicitly approves. Adapted from obra/superpowers `brainstorming`, specialized
+> frozen and the user explicitly approves. Adapted from EVIDIQ methodology `brainstorming`, specialized
 > for EVIDIQ's determinism + x402 + OKX constraints.
 
 ---
@@ -73,9 +73,9 @@ user but record the risk in the eventual PLAN.md §0.
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `brainstorming`)
+## EVIDIQ specialization (vs EVIDIQ methodology `brainstorming`)
 
-| obra/superpowers | EVIDIQ spec-brainstorming |
+| EVIDIQ methodology | EVIDIQ spec-brainstorming |
 |---|---|
 | Explore the design space, converge on a plan | Same, **plus** a frozen deterministic contract |
 | No payment concept | Design x402 v2 paid tool set + atomic prices + §41-C shape up-front |

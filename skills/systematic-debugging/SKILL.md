@@ -2,7 +2,7 @@
 
 > 4-phase root cause. Specialized for: x402 settlement failures (timeout trap §23), OKX rejection
 > analysis (read `approvalRemark`, not guessing), container env-file missing (defect #15), name
-> mismatch (Bastion `validate_manifest` vs `validate_config`). Adapted from obra/superpowers
+> mismatch (Bastion `validate_manifest` vs `validate_config`). Adapted from EVIDIQ methodology
 > `systematic-debugging`, specialized for the failure modes the fleet has actually hit.
 
 ---
@@ -90,9 +90,9 @@ phase at the fleet-specific failure modes:
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `systematic-debugging`)
+## EVIDIQ specialization (vs EVIDIQ methodology `systematic-debugging`)
 
-| obra/superpowers | EVIDIQ systematic-debugging |
+| EVIDIQ methodology | EVIDIQ systematic-debugging |
 |---|---|
 | 4-phase root cause | Same, **plus** each phase points at fleet failure modes |
 | Generic reproduction | §41-C challenge decode (`validate_x402_challenge`), HEAD sweep, determinism 2× |

@@ -2,7 +2,7 @@
 
 > EVIDIQ-specific. Phase 1: `X402_BYPASS=1`, deploy via `deploy/run.sh` (with `--env-file`), curl
 > sweep (HEAD/GET/POST, no hang), OpenClaw 10-tool test. Phase 2 removes the bypass, enables the
-> x402 gate, verifies free 200 / paid 402. No equivalent in obra/superpowers — this is pure fleet
+> x402 gate, verifies free 200 / paid 402. No equivalent in EVIDIQ methodology — this is pure fleet
 > methodology.
 
 ---
@@ -67,7 +67,7 @@ gate works end-to-end for real money.
 
 ---
 
-## EVIDIQ specialization (no obra/superpowers equivalent)
+## EVIDIQ specialization (no EVIDIQ methodology equivalent)
 
 | Concept | EVIDIQ phased-deployment |
 |---|---|

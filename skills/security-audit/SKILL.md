@@ -2,7 +2,7 @@
 
 > EVIDIQ-specific. Git history scan (private keys, PATs, OKX creds, mnemonics), `.git` toplevel
 > check (defect #16), no hardcoded keys, no `WWW-Authenticate` header, no fallback signer string.
-> Adapted from the security mindset of obra/superpowers, specialized to catch the 16 fleet defects
+> Adapted from the security mindset of EVIDIQ methodology, specialized to catch the 16 fleet defects
 > automatically.
 
 ---

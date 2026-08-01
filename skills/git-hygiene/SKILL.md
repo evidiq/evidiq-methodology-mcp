@@ -1,7 +1,7 @@
 # git-hygiene
 
 > Service folder owns `.git` (defect #16). Push via `GITHUB_TOKEN` env helper (§3). Force-push when
-> purging secrets. Root `.gitignore` excludes service dirs. Adapted from obra/superpowers
+> purging secrets. Root `.gitignore` excludes service dirs. Adapted from EVIDIQ methodology
 > `using-git-worktrees`, specialized for the EVIDIQ multi-repo layout where a service folder sits
 > inside a private ops workspace root.
 
@@ -66,9 +66,9 @@ leaking private ops material. This skill enforces the prevention.
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `using-git-worktrees`)
+## EVIDIQ specialization (vs EVIDIQ methodology `using-git-worktrees`)
 
-| obra/superpowers | EVIDIQ git-hygiene |
+| EVIDIQ methodology | EVIDIQ git-hygiene |
 |---|---|
 | Worktrees for parallel work | Not the fleet pattern — one folder per service, own `.git` |
 | Generic push | Token-helper env pattern (§3), never token-in-URL |

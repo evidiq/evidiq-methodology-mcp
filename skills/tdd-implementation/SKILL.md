@@ -1,7 +1,7 @@
 # tdd-implementation
 
 > RED-GREEN-REFACTOR with **vitest**. 33+ tests minimum. Deterministic invariants enforced by tests.
-> No model in the verdict path. Adapted from obra/superpowers `test-driven-development`, specialized
+> No model in the verdict path. Adapted from EVIDIQ methodology `test-driven-development`, specialized
 > so the EVIDIQ determinism contract (§17) is asserted by the test suite, not hoped for.
 
 ---
@@ -47,9 +47,9 @@ isn't just coverage — the test suite is the **enforcement mechanism** for §17
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `test-driven-development`)
+## EVIDIQ specialization (vs EVIDIQ methodology `test-driven-development`)
 
-| obra/superpowers | EVIDIQ tdd-implementation |
+| EVIDIQ methodology | EVIDIQ tdd-implementation |
 |---|---|
 | RED-GREEN-REFACTOR | Same, **plus** determinism tests are mandatory, not optional |
 | Coverage goal | 33+ tests, including invariant + transport tests (defect #11) |

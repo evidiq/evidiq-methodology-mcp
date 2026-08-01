@@ -3,7 +3,7 @@
 > §23 release checklist, Phase 2. Free 200, unpaid paid 402, §41-C challenge decode (no
 > WWW-Authenticate, `payment-required` header, v2/exact/eip155:196/asset/payTo), `onchainos payment
 > quote` all paid tools, top-up test buyer, real paid call → settle → receipt `0x1`. Adapted from
-> obra/superpowers `verification-before-completion`, specialized for the OKX x402 v2 + USDT0 stack.
+> EVIDIQ methodology `verification-before-completion`, specialized for the OKX x402 v2 + USDT0 stack.
 
 ---
 
@@ -58,9 +58,9 @@ This skill spends real USDT0 (small amounts) to prove the payment stack end-to-e
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `verification-before-completion`)
+## EVIDIQ specialization (vs EVIDIQ methodology `verification-before-completion`)
 
-| obra/superpowers | EVIDIQ x402-verification |
+| EVIDIQ methodology | EVIDIQ x402-verification |
 |---|---|
 | Verify the thing you built works | Same, **plus** the x402 v2 money round-trip is verified with real USDT0 |
 | No payment concept | §41-C challenge decode, no `WWW-Authenticate`, atomic `AssetAmount` |

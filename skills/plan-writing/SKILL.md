@@ -1,7 +1,7 @@
 # plan-writing
 
 > Write PLAN.md with **§0 defects carry-forward**, **§17 contract freeze**, and **two-phase scope**
-> (Phase 1 bypass → Phase 2 x402 gate). Bite-sized TDD tasks. Adapted from obra/superpowers
+> (Phase 1 bypass → Phase 2 x402 gate). Bite-sized TDD tasks. Adapted from EVIDIQ methodology
 > `writing-plans`, specialized so a frozen EVIDIQ PLAN.md is the contract the whole build asserts
 > against.
 
@@ -75,9 +75,9 @@ clean input → ALLOW" are the right granularity.
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `writing-plans`)
+## EVIDIQ specialization (vs EVIDIQ methodology `writing-plans`)
 
-| obra/superpowers | EVIDIQ plan-writing |
+| EVIDIQ methodology | EVIDIQ plan-writing |
 |---|---|
 | Generic plan, file-by-file tasks | Same, **plus** §0 + §17 + two-phase scope are mandatory |
 | No defect memory | §0 carries the 16 fleet defects forward, each with a project-specific mitigation |

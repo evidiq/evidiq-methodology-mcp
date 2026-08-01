@@ -2,7 +2,7 @@
 
 > EVIDIQ-specific. Pre-check `canCreate`, upload avatar, `validate-listing` QA gate, `create ASP` +
 > 10 services, `activate` → read `submitApproval` (NOT `activate.success`). STOP gate: no poll. No
-> equivalent in obra/superpowers — this is the OKX.AI ASP listing flow.
+> equivalent in EVIDIQ methodology — this is the OKX.AI ASP listing flow.
 
 ---
 
@@ -66,7 +66,7 @@ Registers the service as an ASP (Agent Service Provider) on OKX.AI with 10 A2MCP
 
 ---
 
-## EVIDIQ specialization (no obra/superpowers equivalent)
+## EVIDIQ specialization (no EVIDIQ methodology equivalent)
 
 | Concept | EVIDIQ okx-registration |
 |---|---|

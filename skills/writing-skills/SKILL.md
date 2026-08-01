@@ -1,7 +1,7 @@
 # writing-skills
 
 > Create new EVIDIQ skills following the fleet pattern. Test against existing services. Adapted
-> from obra/superpowers `writing-skills`, specialized so a new EVIDIQ skill carries the 16 defects,
+> from EVIDIQ methodology `writing-skills`, specialized so a new EVIDIQ skill carries the 16 defects,
 > references the runbook sections, and calls the 9 MCP tools.
 
 ---
@@ -26,7 +26,7 @@ all 15 existing skills) is:
 2. **When to use** — concrete triggers + when NOT to use.
 3. **What it does** — the methodology, with EVIDIQ-specific gates inline (§ references, defect
    numbers, command patterns).
-4. **EVIDIQ specialization table** — vs the obra/superpowers equivalent (or "no equivalent" for the
+4. **EVIDIQ specialization table** — vs the EVIDIQ methodology equivalent (or "no equivalent" for the
    fleet-only skills like `phased-deployment`, `okx-registration`, `documentation-sync`,
    `security-audit`).
 5. **Procedure** — numbered steps, referencing playbook sections + runbook sections by number.
@@ -41,9 +41,9 @@ frozen references: `EVIDIQ-MCP-PRODUCTION-PLAYBOOK.md`, `../EVIDIQ-RUNBOOK.md` �
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `writing-skills`)
+## EVIDIQ specialization (vs EVIDIQ methodology `writing-skills`)
 
-| obra/superpowers | EVIDIQ writing-skills |
+| EVIDIQ methodology | EVIDIQ writing-skills |
 |---|---|
 | Follow the skill format | Same, **plus** the 9 EVIDIQ-specific sections above |
 | Generic references | Frozen fleet references (playbook + runbook §s) |

@@ -2,7 +2,7 @@
 
 > Live curl cross-verification against reference endpoints. Diff `tools/list` vs
 > `*_capabilities`. Determinism check (2× same input = same digest, RFC 6979). Capability diff
-> (10/10 match). Adapted from obra/superpowers `verification-before-completion`, specialized so the
+> (10/10 match). Adapted from EVIDIQ methodology `verification-before-completion`, specialized so the
 > verification is live (against a deployed endpoint), not just "tests pass".
 
 ---
@@ -50,9 +50,9 @@ deployed endpoint behaves the same. This skill runs the live verifications:
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `verification-before-completion`)
+## EVIDIQ specialization (vs EVIDIQ methodology `verification-before-completion`)
 
-| obra/superpowers | EVIDIQ verification-before-completion |
+| EVIDIQ methodology | EVIDIQ verification-before-completion |
 |---|---|
 | Verify before declaring done | Same, **plus** verification is LIVE (curl the deployed endpoint), not just re-running tests |
 | Generic cross-check | Diff `tools/list` vs `*_capabilities` (defect #8/#9) — 10/10 |

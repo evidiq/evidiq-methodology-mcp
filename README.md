@@ -10,8 +10,8 @@
 
 <p align="center">
   Battle-tested skills framework + verification MCP for building, testing, deploying, and registering
-  x402-paid MCP services on OKX.AI. Adapted from <a href="https://github.com/obra/superpowers">obra/superpowers</a>
-  but specialized for the EVIDIQ fleet workflow (15 MCP services shipped, 16 hard-won lessons).
+  x402-paid MCP services on OKX.AI. Specialized for the EVIDIQ fleet workflow (15 MCP services shipped,
+  16 hard-won lessons).
 </p>
 
 <p align="center">
@@ -30,8 +30,6 @@
 </p>
 
 ---
-
-Superpowers (265k stars) proved that codified methodology skills make coding agents dramatically more reliable. But Superpowers is **generic software dev** — it doesn't know about x402 payments, OKX.AI registration, deterministic contract freeze, EIP-191 signers, 0G anchoring, or the 16 defects EVIDIQ has already paid for.
 
 **EVIDIQ Methodology is the specialized version.** It ships two things in one repo:
 
@@ -243,7 +241,7 @@ docker run -d --env-file .env -p 3016:3000 evidiq-methodology:latest
 
 ## Skills Library
 
-The `skills/` directory contains 15 markdown methodology skills adapted from [obra/superpowers](https://github.com/obra/superpowers):
+The `skills/` directory contains 15 markdown methodology skills for the EVIDIQ fleet production workflow:
 
 | Category | Skills |
 |----------|--------|

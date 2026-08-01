@@ -3,7 +3,7 @@
 > EVIDIQ-specific. README (proven table, OKX badge, architecture mermaid, verification log,
 > registration table), landing (`docs.ts` entry, `page.tsx`, hero SVG), runbook (§24 registry row,
 > §NN section, X402-runbook §13 proof row). Commit + push (token helper, `.git` check). No
-> equivalent in obra/superpowers.
+> equivalent in EVIDIQ methodology.
 
 ---
 
@@ -91,7 +91,7 @@ min rebuild).
 
 ---
 
-## EVIDIQ specialization (no obra/superpowers equivalent)
+## EVIDIQ specialization (no EVIDIQ methodology equivalent)
 
 | Concept | EVIDIQ documentation-sync |
 |---|---|

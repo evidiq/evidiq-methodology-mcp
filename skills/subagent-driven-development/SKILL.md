@@ -1,7 +1,7 @@
 # subagent-driven-development
 
 > Fresh subagent per task. Two-stage review. Fix loop (5 rounds). Ledger file. Adapted from
-> obra/superpowers `subagent-driven-development`, specialized so the tasks are EVIDIQ-specific
+> EVIDIQ methodology `subagent-driven-development`, specialized so the tasks are EVIDIQ-specific
 > (build, test, deploy, verify, register) and the fix loop bottoms out at `systematic-debugging`.
 
 ---
@@ -22,7 +22,7 @@ cross task boundaries (no "and also fix the other thing").
 ## What it does
 
 Fresh subagent per task keeps each context clean and stops prompt rot. The pattern (from
-obra/superpowers, adapted):
+EVIDIQ methodology, adapted):
 
 1. **Ledger file** — `evidiq-<slug>-mcp/.ledger.md` (gitignored). One row per task: id, status
    (pending/in-review/blocked/done), assignee note, result link. The ledger is the source of truth
@@ -50,9 +50,9 @@ obra/superpowers, adapted):
 
 ---
 
-## EVIDIQ specialization (vs obra/superpowers `subagent-driven-development`)
+## EVIDIQ specialization (vs EVIDIQ methodology `subagent-driven-development`)
 
-| obra/superpowers | EVIDIQ subagent-driven-development |
+| EVIDIQ methodology | EVIDIQ subagent-driven-development |
 |---|---|
 | Fresh subagent per task | Same |
 | Two-stage review | Same, **plus** stage-1 is the EVIDIQ gate (`npm test` + `tsc --noEmit`), stage-2 includes the §17 freeze + defect checks |
