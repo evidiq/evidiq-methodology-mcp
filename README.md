@@ -43,14 +43,14 @@
 ## What it does
 
 - **Git History Audit** — Scans full commit history for leaked private keys, GitHub PATs, OKX credentials, and mnemonics. Defect #1 and #16 prevention.
-- **x402 Challenge Validator** — Decodes base64 x402 v2 challenges and verifies §41-C compliance (x402Version, scheme, network, asset, payTo, maxTimeout, extra). Confirms WWW-Authenticate absence (§41-A trap).
+- **x402 Challenge Validator** — Decodes base64 x402 v2 challenges and verifies x402 rule 41-C compliance (x402Version, scheme, network, asset, payTo, maxTimeout, extra). Confirms WWW-Authenticate absence (runbook trap 41-A).
 - **OKX Status Checker** — Queries OKX.AI listing status (approvalLabel, approvalRemark, communicationAddress) for any agent.
-- **Plan Freeze Validator** — Checks PLAN.md for §17 Contract Freeze, determinism contract, and all required normative sections.
+- **Plan Freeze Validator** — Checks PLAN.md for the Contract Freeze section, determinism contract, and all required normative sections.
 - **Pre-Submit Check** — Combines curl sweep, capability diff, and x402 compliance into one go/no-go report before OKX submission.
 - **Deployment Env Scanner** — Checks container environment: signer available? OKX creds present? Gate enforced? OG key loaded?
 - **Production Readiness Score** — Scores an MCP service 0–100 against the 16 EVIDIQ defects checklist with live checks.
 - **On-Chain Proof Verifier** — Verifies settlement transactions via `eth_getTransactionReceipt` on X Layer.
-- **Runbook Entry Generator** — Generates §24 registry row + §NN section template from agent ID and registration tx hash.
+- **Runbook Entry Generator** — Generates the registry row + section template from agent ID and registration tx hash.
 - **Readiness Attestation** — Full audit + EIP-191 signed attestation + 0G Storage merkle root anchoring.
 - **15 Methodology Skills** — Auto-triggering markdown skills for spec-brainstorming, plan-writing, TDD, phased-deployment, x402-verification, OKX-registration, documentation-sync, security-audit, and more.
 
@@ -103,13 +103,13 @@ A natural chain: `curl_sweep` → `diff_capabilities` → `validate_x402_complia
 |------|-------|---------|
 | `audit_git_history` | `0.005` | Scan full git history for leaked keys (EVM 0x64hex, ghp_, OKX creds, mnemonics) + git toplevel check. |
 | `check_okx_status` | `0.005` | Query OKX.AI listing status (approvalLabel, approvalRemark, communicationAddress). |
-| `validate_x402_compliance` | `0.01` | Decode base64 x402 v2 challenge → §41-C field-by-field compliance check. |
-| `validate_plan_freeze` | `0.01` | Verify PLAN.md has §17 Contract Freeze + determinism contract + all normative sections. |
+| `validate_x402_compliance` | `0.01` | Decode base64 x402 v2 challenge → rule 41-C field-by-field compliance check. |
+| `validate_plan_freeze` | `0.01` | Verify PLAN.md has the Contract Freeze section + determinism contract + all normative sections. |
 | `pre_submit_check` | `0.015` | Combine curl sweep + capability diff + x402 compliance → go/no-go report. |
 | `scan_deployment_env` | `0.02` | Check container env: signerAvailable, paymentGate, OKX creds, OG key presence. |
 | `production_readiness_score` | `0.02` | Score 0–100 vs 16 EVIDIQ defects with live curl sweep + git scan + OKX status. |
 | `verify_onchain_proof` | `0.02` | Verify settle tx via eth_getTransactionReceipt → status 0x1 confirmation. |
-| `generate_runbook_entry` | `0.03` | Generate §24 registry row + §NN section template from agentId + txHash. |
+| `generate_runbook_entry` | `0.03` | Generate the registry-row + section template from agentId + txHash. |
 | `attest_readiness` | `0.03` | Full audit + EIP-191 signed attestation + 0G Storage merkle root anchoring. |
 
 ### Free preflight and discovery tools
@@ -117,7 +117,7 @@ A natural chain: `curl_sweep` → `diff_capabilities` → `validate_x402_complia
 | Tool | Purpose |
 |------|---------|
 | `methodology_capabilities` | Catalog: 15 skills, 15 tools, 16 defects, pricing. |
-| `validate_plan_sections` | Check PLAN.md has §0 defects + §17 freeze + two-phase scope. |
+| `validate_plan_sections` | Check PLAN.md has the defects section + Contract Freeze + two-phase scope. |
 | `diff_capabilities` | Compare tools/list vs *_capabilities.tools (defect #8/#9). |
 | `curl_sweep` | HEAD/GET/POST sweep with 10s timeout (defect #14 HEAD /mcp hang). |
 | `verify_determinism` | Call free MCP tool 2× and deep-compare JSON responses. |
